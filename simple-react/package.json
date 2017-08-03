@@ -1,0 +1,24 @@
+{
+  "name": "simple-react",
+  "version": "1.0.0",
+  "description": "simple react example",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify front-end/js/main.js -o public/js/main.js -t [ babelify --presets [ latest react ] --plugins [ transform-object-rest-spread ] ]",
+    "install-all": "npm install; $(cd front-end/js; npm install)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NerdcoreSteve/simple-react"
+  },
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0"
+  }
+}
