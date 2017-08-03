@@ -136,6 +136,7 @@ const
     add = (x, y) => x + y
 
 console.log(add(1, 2))
+//prints 3
 
 /*
 Pure functions only return values. They don't have side effects like printing to the screen, talking to a database, or changing variable values.
@@ -149,9 +150,13 @@ var
     someVar = 1,
     dependsOnSomeVar = x => x / someVar
 
-console.log(dependsOnSomeVar(5)) //prints 5
+console.log(dependsOnSomeVar(5))
+//prints 5
+
 someVar = 5
-console.log(dependsOnSomeVar(10)) //now prints 2
+
+console.log(dependsOnSomeVar(10))
+//now prints 2
 
 /*
 Because dependsOnSomeVar depends on the value of someVar, it might not behave in the way you expect.
