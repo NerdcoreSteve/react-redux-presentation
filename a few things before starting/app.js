@@ -1,3 +1,6 @@
+const
+    regeneratorRuntime = require("regenerator-runtime") //Need this bit for generators below
+
 //Constants
 const constantValue = 'banana'
 
@@ -6,13 +9,42 @@ This would generate an error:
 constantValue = 'orange'
 */
 
-//Desctructuring
-
 //Arrow Functions
+console.log('Arrow Functions')
+
+const subtract = (x, y) => {
+    return x - y
+}
+console.log(subtract(3, 2)) //prints 1
+
+const divide = (x, y) => x / y
+console.log(divide(3, 2)) //prints 1.5
+
+//Desctructuring
+console.log('\nDestructuring')
+
+const addAB = ({a, b}) => a + b
+console.log(addAB({a: 4, b: 5})) //prints 9
+
+const
+    head = ([head, ...tail]) => head,
+    tail = ([head, ...tail]) => tail
+
+console.log(head([1, 2, 3, 4])) //prints 1
+console.log(tail([1, 2, 3, 4])) //prints [2, 3, 4]
 
 //Array Spreading
+console.log('\nArray Spreading')
+
+const
+    array1 = [1, 2, 3],
+    array2 = [...array1, 4, 5, 6]
+
+console.log(array2) //prints [ 1, 2, 3, 4, 5, 6 ]
 
 //Object Spreading
+console.log('\nObject Spreading')
+
 const
     object1 = {
         a: 1,
@@ -24,22 +56,85 @@ const
         d: 4
     }
 
-console.log('\nobject spread')
-console.log(object2)
-/*
-prints
-{ a: 1, b: 2, c: 3, d: 4 }
-*/
+console.log(object2) //prints { a: 1, b: 2, c: 3, d: 4 }
 
 //Promises
+const
+    fs = require('fs')
 
-//The yield keyword
+//Here's how you might be used to dealing with asynchronous JavaScript
+fs.readFile('someFile.txt', 'utf8', (err, data) => {
+    console.log('\nCallback')
 
-//Pure functions
+    if (err) {
+        return console.log(err)
+    }
+    console.log(data)
+})
+/*
+prints:
+Callback
+These are the contents of someFile.txt
+Try to contain your excitement
+*/
+
+//But we can also abstract asynchronous code with promises like this
+const
+    promisify = require('es6-promisify'),
+    readFile = promisify(fs.readFile)
+
+readFile('someOtherFile.txt', 'utf8')
+    .then((fileName, err) => {
+        console.log('\nPromise')
+        if (err) {
+            throw err
+        }
+        return readFile(fileName.trim(), 'utf8')
+    })
+    .then((data, err) => {
+        if (err) {
+            throw err
+        }
+        console.log(data)
+    })
+    .catch(console.error)
+/*
+prints
+Promise
+These are the contents of the third file!
+Ice cream for everyone!!!
+*/
+
+//The yield Keyword
+console.log('\nThe yield Keyword')
+const  
+    starFunction = function* () {
+        yield 'This'
+        yield 'is'
+        yield 'kinda'
+        yield 'cool'
+    },
+    generator = starFunction()
+
+console.log(generator.next().value)
+console.log(generator.next().value)
+console.log(generator.next().value)
+console.log(generator.next().value)
+/*
+prints
+The yield Keyword
+This
+is
+kinda
+cool
+*/
+
+//Pure Functions
+console.log('\nPure Functions')
+
 const
     add = (x, y) => x + y
 
-console.log('\npure functions')
 console.log(add(1, 2))
 
 /*

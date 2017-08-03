@@ -1,7 +1,7 @@
 {
   "name": "a_few_things_before_starting",
   "version": "1.0.0",
-  "description": "Just demonstrating a few things you might not have seen before that we'll need to know for the kind of react development I show",
+  "description": "Just demonstrating a few things you might not have seen before that we'll need to know for the kind of react development I'm presenting",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,12 +10,20 @@
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-node6": "^11.0.0",
-    "babel-register": "^6.24.1"
+    "babel-register": "^6.24.1",
+    "es6-promisify": "^5.0.0",
+    "regenerator-runtime": "^0.10.5"
   },
   "babel": {
     "presets": [
       "node6"
     ],
-    "plugins": ["transform-object-rest-spread"]
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-regenerator"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-transform-regenerator": "^6.24.1"
   }
 }
