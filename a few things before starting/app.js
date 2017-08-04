@@ -27,27 +27,21 @@ const stringReturner =
 console.log(stringReturner())
 //prints this function returns a string
 
+const increment = x => x + 1
+console.log(increment(1))
+//prints 2
+
+//If you're returning an object with a one-liner
+//you need to wrap the object in parentheses
+const returnObject = () => ({a: 1, b: 2})
+console.log(returnObject())
+//prints { a: 1, b: 2 }
+
 //Desctructuring
 console.log('\nDestructuring')
 
 const addAB = ({a, b}) => a + b
 console.log(addAB({a: 4, b: 5})) //prints 9
-
-const
-    head = ([head, ...tail]) => head,
-    tail = ([head, ...tail]) => tail
-
-console.log(head([1, 2, 3, 4])) //prints 1
-console.log(tail([1, 2, 3, 4])) //prints [2, 3, 4]
-
-//Array Spreading
-console.log('\nArray Spreading')
-
-const
-    array1 = [1, 2, 3],
-    array2 = [...array1, 4, 5, 6]
-
-console.log(array2) //prints [ 1, 2, 3, 4, 5, 6 ]
 
 //Object Spreading
 console.log('\nObject Spreading')
