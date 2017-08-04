@@ -15,10 +15,17 @@ console.log('Arrow Functions')
 const subtract = (x, y) => {
     return x - y
 }
-console.log(subtract(3, 2)) //prints 1
+console.log(subtract(3, 2))
+//prints 1
 
 const divide = (x, y) => x / y
-console.log(divide(3, 2)) //prints 1.5
+console.log(divide(3, 2))
+//prints 1.5
+
+const stringReturner =
+    () => 'this function returns a string'
+console.log(stringReturner())
+//prints this function returns a string
 
 //Desctructuring
 console.log('\nDestructuring')
