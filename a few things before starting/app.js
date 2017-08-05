@@ -43,6 +43,19 @@ console.log('\nDestructuring')
 const addAB = ({a, b}) => a + b
 console.log(addAB({a: 4, b: 5})) //prints 9
 
+//Map
+console.log('\nMap')
+
+console.log([1, 2, 3].map(x => 2 * x))
+//prints [2, 4, 6]
+
+console.log(
+    [1, 2, 3]
+        .map(x => 2 * x)
+        .map(x => x + 3)
+        .map(x => x * x))
+//prints [ 25, 49, 81 ]
+
 //Object Spreading
 console.log('\nObject Spreading')
 
