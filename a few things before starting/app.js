@@ -1,6 +1,3 @@
-const
-    regeneratorRuntime = require("regenerator-runtime") //Need this bit for generators below
-
 //Constants
 const constantValue = 'banana'
 
@@ -71,77 +68,6 @@ const
     }
 
 console.log(object2) //prints { a: 1, b: 2, c: 3, d: 4 }
-
-//Promises
-const
-    fs = require('fs')
-
-//Here's how you might be used to dealing with asynchronous JavaScript
-fs.readFile('someFile.txt', 'utf8', (err, data) => {
-    console.log('\nCallback')
-
-    if (err) {
-        return console.log(err)
-    }
-    console.log(data)
-})
-/*
-prints:
-Callback
-These are the contents of someFile.txt
-Try to contain your excitement
-*/
-
-//But we can also abstract asynchronous code with promises like this
-const
-    promisify = require('es6-promisify'),
-    readFile = promisify(fs.readFile)
-
-readFile('someOtherFile.txt', 'utf8')
-    .then((fileName, err) => {
-        console.log('\nPromise')
-        if (err) {
-            throw err
-        }
-        return readFile(fileName.trim(), 'utf8')
-    })
-    .then((data, err) => {
-        if (err) {
-            throw err
-        }
-        console.log(data)
-    })
-    .catch(console.error)
-/*
-prints
-Promise
-These are the contents of the third file!
-Ice cream for everyone!!!
-*/
-
-//The yield Keyword
-console.log('\nThe yield Keyword')
-const  
-    starFunction = function* () {
-        yield 'This'
-        yield 'is'
-        yield 'kinda'
-        yield 'cool'
-    },
-    generator = starFunction()
-
-console.log(generator.next().value)
-console.log(generator.next().value)
-console.log(generator.next().value)
-console.log(generator.next().value)
-/*
-prints
-The yield Keyword
-This
-is
-kinda
-cool
-*/
 
 //Pure Functions
 console.log('\nPure Functions')
