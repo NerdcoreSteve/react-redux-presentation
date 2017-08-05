@@ -38,7 +38,8 @@ var React = require('react'),
     color: '#03CEA4',
     padding: '.3rem',
     borderRadius: '.5rem',
-    margin: '.3rem'
+    margin: '.3rem',
+    width: '21rem'
 },
     Header = function Header(_ref) {
     var titleText = _ref.titleText;

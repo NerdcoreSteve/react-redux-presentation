@@ -21,6 +21,7 @@ const
         padding: '.3rem',
         borderRadius: '.5rem',
         margin: '.3rem',
+        width: '21rem',
     },
     Header = ({titleText}) =>
         <div style={foreGroundStyle}>
