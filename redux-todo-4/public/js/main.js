@@ -23397,7 +23397,7 @@ module.exports = function () {
         case 'MOVE_UP':
             return _extends({}, state, {
                 toDos: state.toDos.reduce(function (toDos, toDo) {
-                    return toDo.id === action.id ? allButLast(toDos).concat(toDo).concat(last(toDos)) : toDos.concat(toDo);
+                    return toDo.id === action.id ? allButLast(toDos).concat(toDo).concat(last(toDos) ? last(toDos) : []) : toDos.concat(toDo);
                 }, [])
             });
         case 'MOVE_DOWN':

@@ -19,7 +19,7 @@ module.exports = (state = initialState, action) => {
                         toDo.id === action.id
                             ? allButLast(toDos)
                                 .concat(toDo)
-                                .concat(last(toDos))
+                                .concat(last(toDos) ? last(toDos) : [])
                             : toDos.concat(toDo),
                     [])
             }
