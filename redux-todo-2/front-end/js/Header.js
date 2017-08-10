@@ -8,7 +8,7 @@ const
     Header = ({titleText}, {store}) =>
         <div
             style={foregroundStyle}
-            onClick={() => console.log('store', store)}>
+            onClick={() => store.dispatch({type: 'ADD'})}>
                 {titleText} <Button text='+'/>
         </div>
 

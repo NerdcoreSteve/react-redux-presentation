@@ -2,35 +2,26 @@ const
     React = require('react'),
     ReactDOM = require('react-dom'),
     {createStore} = require('redux'),
-    {Provider} = require('react-redux'),
+    {Provider} = require('react-redux')
+
+const
     Header = require('./Header'),
     Item = require('./Item'),
-    toDos = [
-        {
-            key: 1,
-            text: 'climb Mt. Everest',
-        },
-        {
-            key: 2,
-            text: 'become an astronaut',
-        },
-        {
-            key: 3,
-            text: 'win the Nobel Peace Prize',
-        },
-    ],
-    reducer = (state = toDos) => state,
-    store = createStore(reducer),
+    reducer = require('./reducer'),
+    store = createStore(reducer)
+
+const
     render = () =>
         ReactDOM.render(
             <Provider store={store}>
                 <div>
                     <Header titleText='To Do List'/>
-                    {store.getState()
+                    {store.getState().toDos
                         .map(({text, key}) =>
                             <Item text={text} key={key}/>)}
                 </div>
             </Provider>,
             document.getElementById('root'))
 
+store.subscribe(render)
 render()
