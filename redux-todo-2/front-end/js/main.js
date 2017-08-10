@@ -17,8 +17,8 @@ const
                 <div>
                     <Header titleText='To Do List'/>
                     {store.getState().toDos
-                        .map(({text, key}) =>
-                            <Item text={text} key={key}/>)}
+                        .map(({text, key, id}) =>
+                            <Item text={text} id={id} key={key}/>)}
                 </div>
             </Provider>,
             document.getElementById('root'))

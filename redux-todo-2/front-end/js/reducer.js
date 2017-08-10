@@ -1,20 +1,7 @@
 const
     initialState = {
-        nextKey: 4,
-        toDos: [
-            {
-                key: 1,
-                text: 'climb Mt. Everest',
-            },
-            {
-                key: 2,
-                text: 'become an astronaut',
-            },
-            {
-                key: 3,
-                text: 'win the Nobel Peace Prize',
-            },
-        ]
+        nextKey: 1,
+        toDos: []
     }
 
 module.exports = (state = initialState, action) => {
@@ -25,8 +12,16 @@ module.exports = (state = initialState, action) => {
                 nextKey: state.nextKey + 1,
                 toDos: state.toDos.concat([{
                     key: state.nextKey,
+                    id: state.nextKey,
                     text: 'Do a thing'
                 }])
+            }
+        case 'REMOVE':
+            return {
+                ...state,
+                toDos: state.toDos
+                    .filter(toDo =>
+                        toDo.id !== action.id)
             }
         default:
             return state

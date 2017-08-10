@@ -53,11 +53,13 @@ module.exports = Header;
 'use strict';
 
 var React = require('react'),
+    PropTypes = require('prop-types'),
     Button = require('./Button'),
-    foregroundStyle = require('./foregroundStyle');
-
-module.exports = function (_ref) {
-    var text = _ref.text;
+    foregroundStyle = require('./foregroundStyle'),
+    Item = function Item(_ref, _ref2) {
+    var text = _ref.text,
+        id = _ref.id;
+    var store = _ref2.store;
     return React.createElement(
         'div',
         { style: foregroundStyle },
@@ -68,11 +70,21 @@ module.exports = function (_ref) {
             readOnly: 'readonly',
             style: { width: '15rem' },
             value: text }),
-        React.createElement(Button, { text: '-' })
+        React.createElement(Button, {
+            text: '-',
+            onClick: function onClick() {
+                return store.dispatch({ type: 'REMOVE', id: id });
+            } })
     );
 };
 
-},{"./Button":1,"./foregroundStyle":4,"react":216}],4:[function(require,module,exports){
+Item.contextTypes = {
+    store: PropTypes.object
+};
+
+module.exports = Item;
+
+},{"./Button":1,"./foregroundStyle":4,"prop-types":47,"react":216}],4:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -110,8 +122,9 @@ var render = function render() {
             React.createElement(Header, { titleText: 'To Do List' }),
             store.getState().toDos.map(function (_ref) {
                 var text = _ref.text,
-                    key = _ref.key;
-                return React.createElement(Item, { text: text, key: key });
+                    key = _ref.key,
+                    id = _ref.id;
+                return React.createElement(Item, { text: text, id: id, key: key });
             })
         )
     ), document.getElementById('root'));
@@ -23342,17 +23355,8 @@ function symbolObservablePonyfill(root) {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var initialState = {
-    nextKey: 4,
-    toDos: [{
-        key: 1,
-        text: 'climb Mt. Everest'
-    }, {
-        key: 2,
-        text: 'become an astronaut'
-    }, {
-        key: 3,
-        text: 'win the Nobel Peace Prize'
-    }]
+    nextKey: 1,
+    toDos: []
 };
 
 module.exports = function () {
@@ -23365,8 +23369,15 @@ module.exports = function () {
                 nextKey: state.nextKey + 1,
                 toDos: state.toDos.concat([{
                     key: state.nextKey,
+                    id: state.nextKey,
                     text: 'Do a thing'
                 }])
+            });
+        case 'REMOVE':
+            return _extends({}, state, {
+                toDos: state.toDos.filter(function (toDo) {
+                    return toDo.id !== action.id;
+                })
             });
         default:
             return state;
