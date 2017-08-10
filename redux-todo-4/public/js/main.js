@@ -23365,28 +23365,12 @@ function symbolObservablePonyfill(root) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var tap = function tap(x) {
-    console.log(x);return x;
-},
-    initialState = {
+var initialState = {
     nextId: 1,
     toDos: []
 },
     last = function last(arr) {
     return arr[arr.length - 1];
-},
-    allButLast = function allButLast(arr) {
-    return arr.slice(0, -1);
-},
-    head = function head(_head) {
-    return _head;
-},
-    tail = function tail(head) {
-    for (var _len = arguments.length, _tail = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        _tail[_key - 1] = arguments[_key];
-    }
-
-    return _tail;
 };
 
 module.exports = function () {
@@ -23397,13 +23381,13 @@ module.exports = function () {
         case 'MOVE_UP':
             return _extends({}, state, {
                 toDos: state.toDos.reduce(function (toDos, toDo) {
-                    return toDo.id === action.id ? allButLast(toDos).concat(toDo).concat(last(toDos) ? last(toDos) : []) : toDos.concat(toDo);
+                    return toDo.id === action.id ? toDos.slice(0, -1).concat(toDo).concat(last(toDos) ? last(toDos) : []) : toDos.concat(toDo);
                 }, [])
             });
         case 'MOVE_DOWN':
             return _extends({}, state, {
                 toDos: state.toDos.reduceRight(function (toDos, toDo) {
-                    return tap(toDo).id === action.id ? head(toDos).concat(toDo).concat(tail(toDos)) : [toDo].concat(toDos);
+                    return toDo.id === action.id ? [toDos[0]].concat([toDo]).concat(toDos.slice(1)) : [toDo].concat(toDos);
                 }, [])
             });
         case 'CHANGE_TEXT':

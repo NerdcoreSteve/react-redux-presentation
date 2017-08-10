@@ -1,13 +1,9 @@
 const
-    tap = x => { console.log(x); return x},
     initialState = {
         nextId: 1,
         toDos: []
     },
-    last = arr => arr[arr.length - 1],
-    allButLast = arr => arr.slice(0, -1),
-    head = (head, ...tail) => head,
-    tail = (head, ...tail) => tail
+    last = arr => arr[arr.length - 1]
 
 module.exports = (state = initialState, action) => {
     switch(action.type) {
@@ -17,7 +13,7 @@ module.exports = (state = initialState, action) => {
                 toDos: state.toDos.reduce(
                     (toDos, toDo) =>
                         toDo.id === action.id
-                            ? allButLast(toDos)
+                            ? toDos.slice(0, -1)
                                 .concat(toDo)
                                 .concat(last(toDos) ? last(toDos) : [])
                             : toDos.concat(toDo),
@@ -28,8 +24,8 @@ module.exports = (state = initialState, action) => {
                 ...state,
                 toDos: state.toDos.reduceRight(
                     (toDos, toDo) =>
-                        tap(toDo).id === action.id
-                            ? head(toDos).concat(toDo).concat(tail(toDos))
+                        toDo.id === action.id
+                            ? [toDos[0]].concat([toDo]).concat(toDos.slice(1))
                             : [toDo].concat(toDos),
                     [])
             }
