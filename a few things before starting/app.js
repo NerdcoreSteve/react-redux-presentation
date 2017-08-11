@@ -87,6 +87,17 @@ const
 
 console.log(object2) //prints { a: 1, b: 2, c: 3, d: 4 }
 
+//Default Arguments
+console.log('\nDefault Arguments')
+const
+    defaultAdd = (x = 1, y = 2) => x + y
+console.log(defaultAdd(3, 4))
+//prints 7
+console.log(defaultAdd(3))
+//prints 5
+console.log(defaultAdd())
+//prints 3
+
 //Pure Functions
 console.log('\nPure Functions')
 
