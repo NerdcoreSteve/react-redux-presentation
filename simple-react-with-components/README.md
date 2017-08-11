@@ -1,5 +1,5 @@
-# simple-react
-simple react example
+# simple-react-with-components
+simple react with components example
 
 just run `npm run install-all`
 It runs just fine but causes and error at the end, not sure how to stop that from happening.

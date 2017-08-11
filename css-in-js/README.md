@@ -1,5 +1,5 @@
-# simple-react
-simple react example
+# css-in-js
+CSS in JS example
 
 just run `npm run install-all`
 It runs just fine but causes and error at the end, not sure how to stop that from happening.

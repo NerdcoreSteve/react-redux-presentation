@@ -1,5 +1,4 @@
-# simple-react
-simple react example
+# Redux To Do 2
 
 just run `npm run install-all`
 It runs just fine but causes and error at the end, not sure how to stop that from happening.
