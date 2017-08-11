@@ -151,8 +151,8 @@ console.log(dependsOnSomeVar(5))
 
 someVar = 5
 
-console.log(dependsOnSomeVar(10))
-//now prints 2
+console.log(dependsOnSomeVar(5))
+//now prints 1
 
 /*
 Because dependsOnSomeVar depends on the value of someVar, it might not behave in the way you expect.
