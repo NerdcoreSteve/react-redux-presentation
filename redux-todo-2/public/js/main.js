@@ -23367,11 +23367,11 @@ module.exports = function () {
         case 'ADD':
             return _extends({}, state, {
                 nextKey: state.nextKey + 1,
-                toDos: state.toDos.concat([{
+                toDos: state.toDos.concat({
                     key: state.nextKey,
                     id: state.nextKey,
                     text: 'Do a thing'
-                }])
+                })
             });
         case 'REMOVE':
             return _extends({}, state, {
