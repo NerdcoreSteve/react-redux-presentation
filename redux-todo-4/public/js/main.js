@@ -23371,6 +23371,24 @@ var initialState = {
 },
     last = function last(arr) {
     return arr[arr.length - 1];
+},
+    head = function head(arr) {
+    return arr[0];
+},
+    tail = function tail(arr) {
+    return arr.slice(1);
+},
+    allButLast = function allButLast(arr) {
+    return arr.slice(0, -1);
+},
+    lastOrEmpty = function lastOrEmpty(arr) {
+    return last(arr) ? last(arr) : [];
+},
+    addOneFromBottom = function addOneFromBottom(el, arr) {
+    return allButLast(arr).concat(el).concat(lastOrEmpty(arr));
+},
+    addOneFromTop = function addOneFromTop(el, arr) {
+    return [head(arr)].concat(el).concat(tail(arr));
 };
 
 module.exports = function () {
@@ -23381,13 +23399,13 @@ module.exports = function () {
         case 'MOVE_UP':
             return _extends({}, state, {
                 toDos: state.toDos.reduce(function (toDos, toDo) {
-                    return toDo.id === action.id ? toDos.slice(0, -1).concat(toDo).concat(last(toDos) ? last(toDos) : []) : toDos.concat(toDo);
+                    return toDo.id === action.id ? addOneFromBottom(toDo, toDos) : toDos.concat(toDo);
                 }, [])
             });
         case 'MOVE_DOWN':
             return _extends({}, state, {
                 toDos: state.toDos.reduceRight(function (toDos, toDo) {
-                    return toDo.id === action.id ? [toDos[0]].concat([toDo]).concat(toDos.slice(1)) : [toDo].concat(toDos);
+                    return toDo.id === action.id ? addOneFromTop(toDo, toDos) : [toDo].concat(toDos);
                 }, [])
             });
         case 'CHANGE_TEXT':

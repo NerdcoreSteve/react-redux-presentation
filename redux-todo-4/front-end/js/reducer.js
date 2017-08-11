@@ -3,7 +3,19 @@ const
         nextId: 1,
         toDos: []
     },
-    last = arr => arr[arr.length - 1]
+    last = arr => arr[arr.length - 1],
+    head = arr => arr[0],
+    tail = arr => arr.slice(1),
+    allButLast = arr => arr.slice(0, -1),
+    lastOrEmpty = arr => last(arr) ? last(arr) : [],
+    addOneFromBottom = (el, arr) =>
+        allButLast(arr)
+            .concat(el)
+            .concat(lastOrEmpty(arr)),
+    addOneFromTop = (el, arr) =>
+        [head(arr)]
+            .concat(el)
+            .concat(tail(arr))
 
 module.exports = (state = initialState, action) => {
     switch(action.type) {
@@ -13,9 +25,7 @@ module.exports = (state = initialState, action) => {
                 toDos: state.toDos.reduce(
                     (toDos, toDo) =>
                         toDo.id === action.id
-                            ? toDos.slice(0, -1)
-                                .concat(toDo)
-                                .concat(last(toDos) ? last(toDos) : [])
+                            ? addOneFromBottom(toDo, toDos)
                             : toDos.concat(toDo),
                     [])
             }
@@ -25,7 +35,7 @@ module.exports = (state = initialState, action) => {
                 toDos: state.toDos.reduceRight(
                     (toDos, toDo) =>
                         toDo.id === action.id
-                            ? [toDos[0]].concat([toDo]).concat(toDos.slice(1))
+                            ? addOneFromTop(toDo, toDos)
                             : [toDo].concat(toDos),
                     [])
             }
