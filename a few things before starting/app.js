@@ -60,6 +60,17 @@ console.log(
         .map(x => x * x))
 //prints [ 25, 49, 81 ]
 
+console.log(
+    ['Fluttershy', 'Twilight Sparkle', 'Pinkie Pie']
+        .map((x, i) => (i + 1) + ') ' + x)
+        .join('\n'))
+/*
+prints 
+1) Fluttershy
+2) Twilight Sparkle
+3) Pinkie Pie
+*/
+
 //Object Spreading
 console.log('\nObject Spreading')
 
