@@ -40,6 +40,13 @@ console.log('\nDestructuring')
 const addAB = ({a, b}) => a + b
 console.log(addAB({a: 4, b: 5})) //prints 9
 
+const {thing} = {
+    thing: 'this is a thing',
+    stuff: 'this is some stuff'
+}
+console.log(thing)
+//Prints this is a thing
+
 //Map
 console.log('\nMap')
 
