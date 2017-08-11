@@ -78,6 +78,26 @@ prints
 //Object Shorthand
 console.log('\nObject Shorthand')
 
+const
+    superHero = (name, secretIdentity, powers) => ({
+        name, secretIdentity, powers
+    })
+console.log(
+    superHero(
+        'Spider-Man',
+        'Peter Parker',
+        [
+            'Wall crawling',
+            'Super Strength',
+            'Spider Sense'
+        ]))
+/*
+Prints
+{ name: 'Spider-Man',
+  secretIdentity: 'Peter Parker',
+  powers: [ 'Wall crawling', 'Super Strength', 'Spider Sense' ] }
+*/
+
 //Object Spreading
 console.log('\nObject Spreading')
 
