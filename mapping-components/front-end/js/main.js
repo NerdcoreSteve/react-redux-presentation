@@ -24,7 +24,7 @@ const
             <div>
                 <Header titleText='Yo Yo, What Up?'/>
                 {paragraphs
-                    .map((paragraph, key) => ({text: paragraph, key: key}))
+                    .map((paragraph, key) => ({text: paragraph, key}))
                     .map(({text, key}) =>
                         <Paragraph text={text} key={key}/>)}
             </div>,

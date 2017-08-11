@@ -47,6 +47,10 @@ const {thing} = {
 console.log(thing)
 //Prints this is a thing
 
+const divideRename = ({x: a, y: b}) => a / b
+console.log(divideRename({x: 1, y: 2}))
+//Prints 0.5
+
 //Map
 console.log('\nMap')
 
@@ -70,6 +74,9 @@ prints
 2) Twilight Sparkle
 3) Pinkie Pie
 */
+
+//Object Shorthand
+console.log('\nObject Shorthand')
 
 //Object Spreading
 console.log('\nObject Spreading')
@@ -136,3 +143,25 @@ Of course, we still do need to change the state of our application, talk to data
 
 Anyway, this is the sales pitch for functional programming, we think it's easier. :)
 */
+
+//Filter
+console.log('\nFilter')
+
+console.log(
+    [1, 2, 3, 4, 5]
+        .filter(x => x % 2 !== 0))
+//prints [1, 3, 5]
+
+//Reduce
+console.log('\nReduce')
+
+console.log(
+    [1, 2, 3, 4]
+        .reduce((sum, x) => sum + x, 0))
+//Prints 10
+
+console.log(
+    'reverse'
+        .split('')
+        .reduceRight((str, c) => str + c, ''))
+//Prints esrever
